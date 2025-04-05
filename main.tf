@@ -29,7 +29,8 @@ module "securitygroup" {
   source              = "./modules/SecurityGroup"
   security_group_name = "Sigmatic-Dev-SecurityGroup"
   vpc_id              = module.vpc.vpc_id
-
 }
 
-
+module "IotCore" {
+  source = "./modules/IotCore"
+}
