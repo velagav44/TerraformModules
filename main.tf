@@ -43,9 +43,11 @@ module "securitygroup" {
 }
 
 module "EC2" {
-  source            = "./modules/Ec2"
-  ami               = "123"
-  ec2-instance-type = "g4dn.2xlarge"
+  source = "./modules/Ec2"
+  //RedHat Enterprise Linux 9 image
+  ami               = "ami-0f6c1051253397fef"
+ // ami               = "123"
+  ec2-instance-type = "g4dn.2xlarge" // 8 vpcus, 32 Gib
   tenancy-type      = "dedicated"
   volume_size       = 225
   volume_type       = "gp3"

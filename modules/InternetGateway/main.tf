@@ -2,7 +2,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = var.vpc_id
 
   tags = {
-    Name        = "Sigmatic-Dev-igw"
+    Name        = "Sigmatic-Dev-InternetGateway"
     Environment = "Development"
   }
 }

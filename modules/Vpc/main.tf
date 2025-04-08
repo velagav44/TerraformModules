@@ -3,5 +3,6 @@ resource "aws_vpc" "vpc-one" {
   tags = {
     Name        = "Sigmatic-Dev-VPC"
     Environment = "Development"
+    cidr_block  = "10.0.0.0/16"
   }
 }

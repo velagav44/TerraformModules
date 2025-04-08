@@ -7,11 +7,11 @@ resource "aws_key_pair" "generated_key" {
   key_name   = "terraform-key"
   public_key = tls_private_key.tls-privatekey.public_key_openssh
 
-   tags = {
-    Name        = "Sigmatic-EC2-Key"
+  tags = {
+    Name        = "Sigmatic-EC2-Key-Pair"
     Environment = "Development"
   }
-  
+
 }
 
 resource "local_file" "private_key" {
