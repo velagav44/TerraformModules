@@ -11,6 +11,13 @@ module "resource_group" {
   }
 }
 
+
+module "key" {
+  source = "./modules/key"
+
+}
+
+
 module "vpc" {
   source         = "./modules/Vpc"
   vpc_cidr_block = "10.0.0.0/16"
@@ -25,12 +32,27 @@ module "subnet" {
 }
 
 
+module "internetgateway" {
+  source    = "./modules/InternetGateway"
+  vpc_id    = module.vpc.vpc_id
+  subnet_id = module.subnet.subnet_id
+}
+
+
 module "securitygroup" {
   source              = "./modules/SecurityGroup"
   security_group_name = "Sigmatic-Dev-SecurityGroup"
   vpc_id              = module.vpc.vpc_id
 }
 
+
+
+
+
+
+
+/*
 module "IotCore" {
   source = "./modules/IotCore"
 }
+*/
