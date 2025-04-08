@@ -14,15 +14,12 @@ module "resource_group" {
 
 module "key" {
   source = "./modules/key"
-
 }
-
 
 module "vpc" {
   source         = "./modules/Vpc"
   vpc_cidr_block = "10.0.0.0/16"
 }
-
 
 module "subnet" {
   source            = "./modules/Subnet"
@@ -45,11 +42,12 @@ module "securitygroup" {
   vpc_id              = module.vpc.vpc_id
 }
 
-
-
-
-
-
+module "EC2" {
+  source          = "./modules/Ec2"
+  subnet_id       = module.subnet.subnet_id
+  secuitygroup_id = module.securitygroup.security_group_id
+  key_name        = module.keypair.key_pair_name
+}
 
 /*
 module "IotCore" {
