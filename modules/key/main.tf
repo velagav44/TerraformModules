@@ -8,7 +8,7 @@ resource "aws_key_pair" "generated_key" {
   public_key = tls_private_key.tls-privatekey.public_key_openssh
 
    tags = {
-    Name        = "Sigmatic-Dev-VPC"
+    Name        = "Sigmatic-EC2-Key"
     Environment = "Development"
   }
   

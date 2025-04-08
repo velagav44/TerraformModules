@@ -1,3 +1,8 @@
+module "key" {
+  source = "./modules/key"
+}
+
+
 module "resource_group" {
   source            = "./modules/ResourceGroup"
   group_name        = "Sigmatic-Dev-Resource-Group"
@@ -9,11 +14,6 @@ module "resource_group" {
     Region      = "us-east-2"
     Name        = "Sigmatic-Dev-Resource-Group"
   }
-}
-
-
-module "key" {
-  source = "./modules/key"
 }
 
 module "vpc" {
@@ -43,10 +43,15 @@ module "securitygroup" {
 }
 
 module "EC2" {
-  source          = "./modules/Ec2"
-  subnet_id       = module.subnet.subnet_id
-  secuitygroup_id = module.securitygroup.security_group_id
-  key_name        = module.keypair.key_pair_name
+  source            = "./modules/Ec2"
+  ami               = "123"
+  ec2-instance-type = "g4dn.2xlarge"
+  tenancy-type      = "dedicated"
+  volume_size       = 225
+  volume_type       = "gp3"
+  subnet_id         = module.subnet.subnet_id
+  secuitygroup_id   = module.securitygroup.security_group_id
+  key_name          = module.key.key_pair_name
 }
 
 /*
@@ -54,3 +59,5 @@ module "IotCore" {
   source = "./modules/IotCore"
 }
 */
+
+
